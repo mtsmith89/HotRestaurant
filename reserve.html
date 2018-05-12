@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <title>Tables Page</title>
 
+    <script src="https://code.jquery.com/jquery.js"></script>
+
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
 
@@ -72,7 +74,7 @@
                                 </div>
                             </div>
 
-                            <a class="waves-effect waves-light btn-large blue">Submit</a>
+                            <a class="waves-effect waves-light btn-large blue submit">Submit</a>
 
                         </form>
                     </div>
@@ -94,3 +96,36 @@
 </body>
 
 </html>
+
+<script type="text/javascript">
+
+    $(".submit").on("click", function (event) {
+        event.preventDefault();
+
+        var newReservation = {
+            name: $("#name").val().trim(),
+            phone: $("#phone").val().trim(),
+            email: $("#email").val().trim()
+        };
+
+        console.log(newReservation);
+
+        $.post("/api/tables", newReservation,
+            function (data) {
+
+                if (data) {
+                    alert("Yay! You are officially booked!");
+                }
+                else {
+                    alert("Sorry you are on the wait list");
+                }
+
+                $("#name").val("");
+                $("#phone").val("");
+                $("#email").val("");
+
+            });
+
+    });
+
+</script>

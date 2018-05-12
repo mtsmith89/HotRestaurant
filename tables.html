@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <title>Tables Page</title>
 
+    <script src="https://code.jquery.com/jquery.js"></script>
+
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
 
@@ -44,52 +46,26 @@
         <div class="col s12 m8 offset-m2">
 
             <!-- Tables in Use -->
-            <div class="card small blue-grey lighten-5">
+            <div class="card blue-grey lighten-5">
                 <div class="card-content">
                     <i class="card-title">Current Reservations</i>
                 </div>
                 <div class="card-action white" id="tables">
-                    <ul class="collection">
-                        <li class="collection-item avatar">
-                            <i class="material-icons circle">looks_one</i>
-                            <span class="title">Title</span>
-                            <a href="#!" class="secondary-content">
-                                <i class="material-icons">remove_circle</i>
-                            </a>
-                        </li>
-                        <li class="collection-item avatar">
-                            <i class="material-icons circle">looks_two</i>
-                            <span class="title">Title</span>
-                            <a href="#!" class="secondary-content">
-                                <i class="material-icons">remove_circle</i>
-                            </a>
-                        </li>
+                    <ul id="tableSection" class="collection">
+
                     </ul>
                 </div>
             </div>
 
             <!-- Waiting List -->
-            <div class="card small blue-grey lighten-5">
+            <div class="card blue-grey lighten-5">
                 <div class="card-content">
                     <i class="card-title">Waiting List</i>
                 </div>
                 <div class="card-action white" id="waiting">
 
-                    <ul class="collection">
-                        <li class="collection-item avatar">
-                            <i class="material-icons circle">looks_one</i>
-                            <span class="title">Title</span>
-                            <a href="#!" class="secondary-content">
-                                <i class="material-icons">remove_circle</i>
-                            </a>
-                        </li>
-                        <li class="collection-item avatar">
-                            <i class="material-icons circle">looks_two</i>
-                            <span class="title">Title</span>
-                            <a href="#!" class="secondary-content">
-                                <i class="material-icons">remove_circle</i>
-                            </a>
-                        </li>
+                    <ul id="waitlistSection" class="collection">
+
                     </ul>
                 </div>
             </div>
@@ -100,6 +76,7 @@
     <footer class="page-footer white">
         <div class="container">
             <p>
+                <a href="#" id="clear">Clear Table</a> |
                 <a href="/api/tables">API Table Link</a> |
                 <a href="/api/waitlist">API Wait List</a>
             </p>
@@ -108,5 +85,70 @@
 
 
 </body>
+
+<script type="text/javascript">
+
+    function runTableQuery() {
+        var currentURL = window.location.origin;
+
+        $.ajax({ url: currentURL + "/api/tables", method: "GET" })
+            .then(function (tableData) {
+
+                for (var i = 0; i < tableData.length; i++) {
+
+                    var tableNumber = i + 1;
+
+                    var tableSection = $("<li>");
+                    tableSection.addClass("collection-item avatar");
+                    tableSection.attr("id", "tableWell-" + tableNumber);
+                    $("#tableSection").append(tableSection);
+
+
+
+
+                    $("#tableWell-" + tableNumber).append("<i class='material-icons circle'>grade</i><span class='title'>" + tableNumber + "</span><span class='title'> | " + tableData[i].name + "</span>");
+                }
+            });
+    }
+
+    function runWaitListQuery() {
+
+        var currentURL = window.location.origin;
+
+        $.ajax({ url: currentURL + "/api/waitlist", method: "GET" })
+            .then(function (waitlistData) {
+
+                for (var i = 0; i < waitlistData.length; i++) {
+
+                    var waitlistSection = $("<li>");
+                    waitlistSection.addClass("collection-item avatar");
+                    waitlistSection.attr("id", "waitlistWell-" + i + 1);
+                    $("#waitlistSection").append(waitlistSection);
+                    var tableNumber = i + 1;
+                    $("#waitlistWell-" + i + 1).append("<i class='material-icons circle'>grade</i><span class='title'>" + tableNumber + "</span> | " + waitlistData[i].name + "</h2>");
+                }
+            });
+    }
+
+    function clearTable() {
+
+        var currentURL = window.location.origin;
+        $.ajax({ url: currentURL + "/api/clear", method: "POST" });
+
+    }
+
+    $("#clear").on("click", function () {
+        alert("Clearing...");
+        clearTable();
+        location.reload();
+
+    });
+
+
+    runTableQuery();
+    runWaitListQuery();
+
+
+</script>
 
 </html>
