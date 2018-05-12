@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tables Page</title>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
+    <!-- Materialize icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="row">
+        <div class="col s12 m8 offset-m2">
+            <div class="card center blue-grey lighten-5">
+                <div class="card-content">
+                    <span class="card-title">
+                        <h1 class="center">
+                            <i class="material-icons medium">cake</i>Hot Restaurant</h1>
+                        <h4>Current Reservations and Waiting List</h4>
+                    </span>
+                </div>
+                <div class="card-action">
+                    <a class="waves-effect waves-light btn-large red" href="/reserve">
+                        <i class="material-icons left">fiber_new</i>Make Reservation</a>
+                    <a class="waves-effect waves-light btn-large grey darken-4" href="/">
+                        <i class="material-icons">home</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col s12 m8 offset-m2">
+
+            <!-- Tables in Use -->
+            <div class="card small blue-grey lighten-5">
+                <div class="card-content">
+                    <i class="card-title">Current Reservations</i>
+                </div>
+                <div class="card-action white" id="tables">
+                    <ul class="collection">
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle">looks_one</i>
+                            <span class="title">Title</span>
+                            <a href="#!" class="secondary-content">
+                                <i class="material-icons">remove_circle</i>
+                            </a>
+                        </li>
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle">looks_two</i>
+                            <span class="title">Title</span>
+                            <a href="#!" class="secondary-content">
+                                <i class="material-icons">remove_circle</i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Waiting List -->
+            <div class="card small blue-grey lighten-5">
+                <div class="card-content">
+                    <i class="card-title">Waiting List</i>
+                </div>
+                <div class="card-action white" id="waiting">
+
+                    <ul class="collection">
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle">looks_one</i>
+                            <span class="title">Title</span>
+                            <a href="#!" class="secondary-content">
+                                <i class="material-icons">remove_circle</i>
+                            </a>
+                        </li>
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle">looks_two</i>
+                            <span class="title">Title</span>
+                            <a href="#!" class="secondary-content">
+                                <i class="material-icons">remove_circle</i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="page-footer white">
+        <div class="container">
+            <p>
+                <a href="/api/tables">API Table Link</a> |
+                <a href="/api/waitlist">API Wait List</a>
+            </p>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>

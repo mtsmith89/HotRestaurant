@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tables Page</title>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
+    <!-- Materialize icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="row">
+        <div class="col s12 m8 offset-m2">
+            <div class="card center blue-grey lighten-5">
+                <div class="card-content">
+                    <span class="card-title">
+                        <h1 class="center">
+                            <i class="material-icons medium">cake</i>Hot Restaurant</h1>
+                        <h4>Make your reservation</h4>
+                </div>
+                <div class="card-action">
+                    <a class="waves-effect waves-light btn-large blue" href="/tables">
+                        <i class="material-icons left">event_note</i>View Tables</a>
+                    <a class="waves-effect waves-light btn-large grey darken-4" href="/">
+                        <i class="material-icons">home</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 m8 offset-m2">
+            <div class="card blue-grey lighten-5">
+                <div class="card-content">
+                    <h4>Table Reservation</h4>
+                </div>
+                <div class="card-action white">
+
+                    <div class="row">
+                        <form class="col s12">
+                            <div class="row">
+                                <div class="input-field">
+                                    <i class="material-icons prefix">face</i>
+                                    <textarea id="name" class="materialize-textarea"></textarea>
+                                    <label for="name">Name</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="input-field">
+                                    <i class="material-icons prefix">phone</i>
+                                    <textarea id="phone" class="materialize-textarea"></textarea>
+                                    <label for="phone">Phone Number</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="input-field">
+                                    <i class="material-icons prefix">email</i>
+                                    <textarea id="email" class="materialize-textarea"></textarea>
+                                    <label for="email">Email Address</label>
+                                </div>
+                            </div>
+
+                            <a class="waves-effect waves-light btn-large blue">Submit</a>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="page-footer white">
+        <div class="container">
+            <p>
+                <a href="/api/tables">API Table Link</a> |
+                <a href="/api/waitlist">API Wait List</a>
+            </p>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>
